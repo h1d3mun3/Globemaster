@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		836487B02F60743600054E85 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 836487AF2F60743600054E85 /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		835327CC2F606FD40044EF68 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		835327BE2F606FD40044EF68 /* KanaCommand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KanaCommand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		835327CB2F606FD40044EF68 /* KanaCommandTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KanaCommandTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		835327D52F606FD40044EF68 /* KanaCommandUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KanaCommandUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		836487AF2F60743600054E85 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +80,7 @@
 		835327B52F606FD40044EF68 = {
 			isa = PBXGroup;
 			children = (
+				836487AF2F60743600054E85 /* README.md */,
 				835327C02F606FD40044EF68 /* KanaCommand */,
 				835327CE2F606FD40044EF68 /* KanaCommandTests */,
 				835327D82F606FD40044EF68 /* KanaCommandUITests */,
@@ -212,6 +218,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				836487B02F60743600054E85 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
