@@ -8,14 +8,19 @@
 import Cocoa
 import CoreGraphics
 
-final class KeyRemapper: @unchecked Sendable {
+final class KeyRemapper: Sendable {
 
-    private var eventTap: CFMachPort?
-    private var runLoopSource: CFRunLoopSource?
+    private let lock = NSLock()
 
-    private var leftCommandPressed = false
-    private var rightCommandPressed = false
-    private var otherKeyPressedDuringCommand = false
+    private struct State {
+        var eventTap: CFMachPort?
+        var runLoopSource: CFRunLoopSource?
+        var leftCommandPressed = false
+        var rightCommandPressed = false
+        var otherKeyPressedDuringCommand = false
+    }
+
+    private let state = UnsafeMutablePointer<State>.allocate(capacity: 1)
 
     // keycodes
     private static let leftCommandKeyCode: Int64 = 55
@@ -23,13 +28,28 @@ final class KeyRemapper: @unchecked Sendable {
     private static let eisuuKeyCode: CGKeyCode = 102
     private static let kanaKeyCode: CGKeyCode = 104
 
+    init() {
+        state.initialize(to: State())
+    }
+
+    deinit {
+        stop()
+        state.deinitialize(count: 1)
+        state.deallocate()
+    }
+
     var isEnabled: Bool {
-        guard let tap = eventTap else { return false }
+        lock.lock()
+        defer { lock.unlock() }
+        guard let tap = state.pointee.eventTap else { return false }
         return CGEvent.tapIsEnabled(tap: tap)
     }
 
     func start() -> Bool {
-        guard eventTap == nil else { return true }
+        lock.lock()
+        defer { lock.unlock() }
+
+        guard state.pointee.eventTap == nil else { return true }
 
         let eventMask: CGEventMask =
             (1 << CGEventType.flagsChanged.rawValue) |
@@ -48,10 +68,10 @@ final class KeyRemapper: @unchecked Sendable {
             return false
         }
 
-        eventTap = tap
+        state.pointee.eventTap = tap
 
         let source = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, tap, 0)
-        runLoopSource = source
+        state.pointee.runLoopSource = source
         CFRunLoopAddSource(CFRunLoopGetCurrent(), source, .commonModes)
         CGEvent.tapEnable(tap: tap, enable: true)
 
@@ -59,24 +79,29 @@ final class KeyRemapper: @unchecked Sendable {
     }
 
     func stop() {
-        if let tap = eventTap {
+        lock.lock()
+        defer { lock.unlock() }
+
+        if let tap = state.pointee.eventTap {
             CGEvent.tapEnable(tap: tap, enable: false)
         }
-        if let source = runLoopSource {
+        if let source = state.pointee.runLoopSource {
             CFRunLoopRemoveSource(CFRunLoopGetCurrent(), source, .commonModes)
         }
-        if let tap = eventTap {
+        if let tap = state.pointee.eventTap {
             CFMachPortInvalidate(tap)
         }
-        eventTap = nil
-        runLoopSource = nil
-        leftCommandPressed = false
-        rightCommandPressed = false
-        otherKeyPressedDuringCommand = false
+        state.pointee.eventTap = nil
+        state.pointee.runLoopSource = nil
+        state.pointee.leftCommandPressed = false
+        state.pointee.rightCommandPressed = false
+        state.pointee.otherKeyPressedDuringCommand = false
     }
 
     func toggle() {
-        guard let tap = eventTap else { return }
+        lock.lock()
+        defer { lock.unlock() }
+        guard let tap = state.pointee.eventTap else { return }
         let current = CGEvent.tapIsEnabled(tap: tap)
         CGEvent.tapEnable(tap: tap, enable: !current)
     }
@@ -84,18 +109,20 @@ final class KeyRemapper: @unchecked Sendable {
     // MARK: - Event Handling
 
     fileprivate func handleEvent(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent) -> Unmanaged<CGEvent>? {
+        lock.lock()
+        defer { lock.unlock() }
 
         // Re-enable tap if it was disabled by the system (timeout)
         if type == .tapDisabledByTimeout || type == .tapDisabledByUserInput {
-            if let tap = eventTap {
+            if let tap = state.pointee.eventTap {
                 CGEvent.tapEnable(tap: tap, enable: true)
             }
             return Unmanaged.passUnretained(event)
         }
 
         if type == .keyDown {
-            if leftCommandPressed || rightCommandPressed {
-                otherKeyPressedDuringCommand = true
+            if state.pointee.leftCommandPressed || state.pointee.rightCommandPressed {
+                state.pointee.otherKeyPressedDuringCommand = true
             }
             return Unmanaged.passUnretained(event)
         }
@@ -110,26 +137,22 @@ final class KeyRemapper: @unchecked Sendable {
         switch keyCode {
         case Self.leftCommandKeyCode:
             if flags.contains(.maskCommand) {
-                // Left Command pressed down
-                leftCommandPressed = true
-                otherKeyPressedDuringCommand = false
-            } else if leftCommandPressed {
-                // Left Command released
-                leftCommandPressed = false
-                if !otherKeyPressedDuringCommand {
+                state.pointee.leftCommandPressed = true
+                state.pointee.otherKeyPressedDuringCommand = false
+            } else if state.pointee.leftCommandPressed {
+                state.pointee.leftCommandPressed = false
+                if !state.pointee.otherKeyPressedDuringCommand {
                     postKeyEvent(keyCode: Self.eisuuKeyCode)
                 }
             }
 
         case Self.rightCommandKeyCode:
             if flags.contains(.maskCommand) {
-                // Right Command pressed down
-                rightCommandPressed = true
-                otherKeyPressedDuringCommand = false
-            } else if rightCommandPressed {
-                // Right Command released
-                rightCommandPressed = false
-                if !otherKeyPressedDuringCommand {
+                state.pointee.rightCommandPressed = true
+                state.pointee.otherKeyPressedDuringCommand = false
+            } else if state.pointee.rightCommandPressed {
+                state.pointee.rightCommandPressed = false
+                if !state.pointee.otherKeyPressedDuringCommand {
                     postKeyEvent(keyCode: Self.kanaKeyCode)
                 }
             }
