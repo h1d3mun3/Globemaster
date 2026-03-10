@@ -15,6 +15,7 @@ final class KeyRemapper: Sendable {
     private struct State {
         var eventTap: CFMachPort?
         var runLoopSource: CFRunLoopSource?
+        var retainedSelf: Unmanaged<KeyRemapper>?
         var leftCommandPressed = false
         var rightCommandPressed = false
         var otherKeyPressedDuringCommand = false
@@ -55,7 +56,8 @@ final class KeyRemapper: Sendable {
             (1 << CGEventType.flagsChanged.rawValue) |
             (1 << CGEventType.keyDown.rawValue)
 
-        let refcon = UnsafeMutableRawPointer(Unmanaged.passUnretained(self).toOpaque())
+        let retained = Unmanaged.passRetained(self)
+        let refcon = retained.toOpaque()
 
         guard let tap = CGEvent.tapCreate(
             tap: .cgSessionEventTap,
@@ -65,8 +67,11 @@ final class KeyRemapper: Sendable {
             callback: eventCallback,
             userInfo: refcon
         ) else {
+            retained.release()
             return false
         }
+
+        state.pointee.retainedSelf = retained
 
         state.pointee.eventTap = tap
 
@@ -96,6 +101,9 @@ final class KeyRemapper: Sendable {
         state.pointee.leftCommandPressed = false
         state.pointee.rightCommandPressed = false
         state.pointee.otherKeyPressedDuringCommand = false
+
+        state.pointee.retainedSelf?.release()
+        state.pointee.retainedSelf = nil
     }
 
     func toggle() {
