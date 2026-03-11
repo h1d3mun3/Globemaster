@@ -39,13 +39,6 @@ final class KeyRemapper: Sendable {
         state.deallocate()
     }
 
-    var isEnabled: Bool {
-        lock.lock()
-        defer { lock.unlock() }
-        guard let tap = state.pointee.eventTap else { return false }
-        return CGEvent.tapIsEnabled(tap: tap)
-    }
-
     func start() -> Bool {
         lock.lock()
         defer { lock.unlock() }
@@ -104,14 +97,6 @@ final class KeyRemapper: Sendable {
 
         state.pointee.retainedSelf?.release()
         state.pointee.retainedSelf = nil
-    }
-
-    func toggle() {
-        lock.lock()
-        defer { lock.unlock() }
-        guard let tap = state.pointee.eventTap else { return }
-        let current = CGEvent.tapIsEnabled(tap: tap)
-        CGEvent.tapEnable(tap: tap, enable: !current)
     }
 
     // MARK: - Event Handling
