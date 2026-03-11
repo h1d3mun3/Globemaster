@@ -1,4 +1,4 @@
-# KanaCommand
+# Globemaster
 
 macOS用のメニューバー常駐アプリです。Commandキーの単体押しで入力ソースを切り替えます。
 
@@ -14,9 +14,9 @@ macOS用のメニューバー常駐アプリです。Commandキーの単体押�
 
 ## インストール
 
-1. `KanaCommand.app` を `/Applications` に配置
+1. `Globemaster.app` を `/Applications` に配置
 2. アプリを起動
-3. **システム設定 > プライバシーとセキュリティ > アクセシビリティ** で KanaCommand を許可
+3. **システム設定 > プライバシーとセキュリティ > アクセシビリティ** で Globemaster を許可
 
 ## ビルド
 

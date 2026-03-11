@@ -1,8 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
-APP_NAME="KanaCommand"
-SCHEME="KanaCommand"
+APP_NAME="Globemaster"
+SCHEME="Globemaster"
 BUILD_DIR="build"
 DMG_DIR="$BUILD_DIR/dmg"
 OUTPUT_DMG="$BUILD_DIR/$APP_NAME.dmg"

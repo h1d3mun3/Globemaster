@@ -1,6 +1,6 @@
 //
 //  KeyRemapper.swift
-//  KanaCommand
+//  Globemaster
 //
 //  Created by hidemune on 3/11/26.
 //

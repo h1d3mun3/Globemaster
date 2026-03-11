@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "835327BD2F606FD40044EF68"
-               BuildableName = "KanaCommand.app"
-               BlueprintName = "KanaCommand"
-               ReferencedContainer = "container:KanaCommand.xcodeproj">
+               BuildableName = "Globemaster.app"
+               BlueprintName = "Globemaster"
+               ReferencedContainer = "container:Globemaster.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -36,9 +36,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "835327CA2F606FD40044EF68"
-               BuildableName = "KanaCommandTests.xctest"
-               BlueprintName = "KanaCommandTests"
-               ReferencedContainer = "container:KanaCommand.xcodeproj">
+               BuildableName = "GlobemasterTests.xctest"
+               BlueprintName = "GlobemasterTests"
+               ReferencedContainer = "container:Globemaster.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "835327D42F606FD40044EF68"
-               BuildableName = "KanaCommandUITests.xctest"
-               BlueprintName = "KanaCommandUITests"
-               ReferencedContainer = "container:KanaCommand.xcodeproj">
+               BuildableName = "GlobemasterUITests.xctest"
+               BlueprintName = "GlobemasterUITests"
+               ReferencedContainer = "container:Globemaster.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -69,9 +69,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "835327BD2F606FD40044EF68"
-            BuildableName = "KanaCommand.app"
-            BlueprintName = "KanaCommand"
-            ReferencedContainer = "container:KanaCommand.xcodeproj">
+            BuildableName = "Globemaster.app"
+            BlueprintName = "Globemaster"
+            ReferencedContainer = "container:Globemaster.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -86,9 +86,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "835327BD2F606FD40044EF68"
-            BuildableName = "KanaCommand.app"
-            BlueprintName = "KanaCommand"
-            ReferencedContainer = "container:KanaCommand.xcodeproj">
+            BuildableName = "Globemaster.app"
+            BlueprintName = "Globemaster"
+            ReferencedContainer = "container:Globemaster.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

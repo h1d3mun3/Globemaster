@@ -1,13 +1,13 @@
 //
-//  KanaCommandUITestsLaunchTests.swift
-//  KanaCommandUITests
+//  GlobemasterUITestsLaunchTests.swift
+//  GlobemasterUITests
 //
 //  Created by hidemune on 3/11/26.
 //
 
 import XCTest
 
-final class KanaCommandUITestsLaunchTests: XCTestCase {
+final class GlobemasterUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

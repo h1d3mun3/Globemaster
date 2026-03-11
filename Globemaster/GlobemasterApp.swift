@@ -1,6 +1,6 @@
 //
-//  KanaCommandApp.swift
-//  KanaCommand
+//  GlobemasterApp.swift
+//  Globemaster
 //
 //  Created by hidemune on 3/11/26.
 //
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct KanaCommandApp: App {
+struct GlobemasterApp: App {
     private let remapper = KeyRemapper()
 
     init() {
