@@ -1,29 +1,29 @@
 # Globemaster
 
-macOS用のメニューバー常駐アプリです。Commandキーの単体押しで入力ソースを切り替えます。
+A macOS menu bar app that switches input sources with a single Command key press.
 
-- **左⌘** を単体で押して離す → **英数**
-- **右⌘** を単体で押して離す → **かな**
+- **Left ⌘** pressed and released alone → **Eisu (alphanumeric)**
+- **Right ⌘** pressed and released alone → **Kana**
 
-⌘+C などのショートカットは通常通り動作します。
+Shortcuts like ⌘+C continue to work as normal.
 
-## 必要環境
+## Requirements
 
-- macOS 26.2以降
-- アクセシビリティ権限の許可
+- macOS 26.2 or later
+- Accessibility permission
 
-## インストール
+## Installation
 
-1. `Globemaster.app` を `/Applications` に配置
-2. アプリを起動
-3. **システム設定 > プライバシーとセキュリティ > アクセシビリティ** で Globemaster を許可
+1. Place `Globemaster.app` in `/Applications`
+2. Launch the app
+3. Allow Globemaster in **System Settings > Privacy & Security > Accessibility**
 
-## ビルド
+## Build
 
-1. Xcode でプロジェクトを開く
-2. `⌘R` でビルド＆実行
+1. Open the project in Xcode
+2. Build and run with `⌘R`
 
-## 使い方
+## Usage
 
-- 起動するとメニューバーに ⌘ アイコンが表示され、自動的にキー変換が有効になります
-- メニューから「終了」を選択するとアプリが終了し、キー変換も無効になります
+- Once launched, a ⌘ icon appears in the menu bar and key remapping is automatically enabled
+- Select "Quit" from the menu to exit the app and disable key remapping
