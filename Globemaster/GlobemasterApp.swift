@@ -20,13 +20,13 @@ struct GlobemasterApp: App {
 
     var body: some Scene {
         MenuBarExtra {
-            Text("左⌘ → 英数 / 右⌘ → かな")
+            Text("Left ⌘ → Eisu / Right ⌘ → Kana")
                 .font(.caption)
                 .foregroundStyle(.secondary)
 
             Divider()
 
-            Button("終了") {
+            Button("Quit") {
                 remapper.stop()
                 NSApplication.shared.terminate(nil)
             }
