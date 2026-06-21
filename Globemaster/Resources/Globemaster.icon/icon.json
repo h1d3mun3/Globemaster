@@ -8,8 +8,8 @@
         {
           "glass" : false,
           "hidden" : false,
-          "image-name" : "Gemini_Generated_Image_x3pzbkx3pzbkx3pz.png",
-          "name" : "Gemini_Generated_Image_x3pzbkx3pzbkx3pz",
+          "image-name" : "icon.png",
+          "name" : "icon",
           "position" : {
             "scale" : 0.4,
             "translation-in-points" : [
