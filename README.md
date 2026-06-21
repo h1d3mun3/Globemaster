@@ -1,5 +1,7 @@
 # Globemaster
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 A macOS menu bar app that switches input sources with a single Command key press.
 
 - **Left ⌘** pressed and released alone → **Eisu (alphanumeric)**
