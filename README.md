@@ -27,3 +27,7 @@ Shortcuts like ⌘+C continue to work as normal.
 
 - Once launched, a ⌘ icon appears in the menu bar and key remapping is automatically enabled
 - Select "Quit" from the menu to exit the app and disable key remapping
+
+## License
+
+MIT License. See [LICENSE](LICENSE) for details.
