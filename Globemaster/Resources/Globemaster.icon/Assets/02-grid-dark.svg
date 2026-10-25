@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+<g transform="translate(512 512) scale(1.242718) translate(-512 -512)">
+<g fill="#fff" fill-opacity="0.06">
+<rect x="99.5" y="100" width="1" height="824"/>
+<rect x="100" y="99.5" width="824" height="1"/>
+<rect x="202.5" y="100" width="1" height="824"/>
+<rect x="100" y="202.5" width="824" height="1"/>
+<rect x="305.5" y="100" width="1" height="824"/>
+<rect x="100" y="305.5" width="824" height="1"/>
+<rect x="408.5" y="100" width="1" height="824"/>
+<rect x="100" y="408.5" width="824" height="1"/>
+<rect x="511.5" y="100" width="1" height="824"/>
+<rect x="100" y="511.5" width="824" height="1"/>
+<rect x="614.5" y="100" width="1" height="824"/>
+<rect x="100" y="614.5" width="824" height="1"/>
+<rect x="717.5" y="100" width="1" height="824"/>
+<rect x="100" y="717.5" width="824" height="1"/>
+<rect x="820.5" y="100" width="1" height="824"/>
+<rect x="100" y="820.5" width="824" height="1"/>
+<rect x="923.5" y="100" width="1" height="824"/>
+<rect x="100" y="923.5" width="824" height="1"/>
+</g>
+</g>
+</svg>
