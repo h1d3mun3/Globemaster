@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+<defs>
+<radialGradient id="g" gradientUnits="userSpaceOnUse" cx="601" cy="214" r="22">
+<stop offset="0" stop-color="#FF6B5E"/>
+<stop offset="0.55" stop-color="#E3241B"/>
+<stop offset="1" stop-color="#A9140C"/>
+</radialGradient>
+</defs>
+<g transform="translate(512 512) scale(1.242718) translate(-512 -512)">
+<circle cx="605" cy="219" r="18.75" fill="#E3241B" fill-opacity="0.041"/>
+<circle cx="605" cy="219" r="20.50" fill="#E3241B" fill-opacity="0.041"/>
+<circle cx="605" cy="219" r="22.25" fill="#E3241B" fill-opacity="0.041"/>
+<circle cx="605" cy="219" r="24.00" fill="#E3241B" fill-opacity="0.041"/>
+<circle cx="605" cy="219" r="25.75" fill="#E3241B" fill-opacity="0.041"/>
+<circle cx="605" cy="219" r="27.50" fill="#E3241B" fill-opacity="0.041"/>
+<circle cx="605" cy="219" r="29.25" fill="#E3241B" fill-opacity="0.041"/>
+<circle cx="605" cy="219" r="31.00" fill="#E3241B" fill-opacity="0.041"/>
+<circle cx="605" cy="219" r="17" fill="url(#g)"/>
+<circle cx="605" cy="219" r="15.5" fill="none" stroke="#000" stroke-opacity="0.35" stroke-width="3"/>
+</g>
+</svg>
