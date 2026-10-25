@@ -41,7 +41,19 @@ Once launched, a ⌘ icon appears in the menu bar and key remapping is enabled a
 1. Open `Globemaster.xcodeproj` in Xcode
 2. Build and run with `⌘R`
 
-To build a DMG, run `scripts/build-dmg.sh`; it writes `build/Globemaster.dmg`.
+## Releasing
+
+A release is a DMG holding a signed, notarized `Globemaster.app` and a link to `/Applications`.
+
+```sh
+scripts/build-dmg.sh archive                          # archive, then open it in Xcode
+# Organizer: Distribute App > Direct Distribution (signs and notarizes), export the app
+scripts/build-dmg.sh package path/to/Globemaster.app  # checks signing, writes build/Globemaster.dmg
+```
+
+`package` refuses an app that is not signed with a Developer ID or not notarized; `--unsigned`
+skips the checks to try packaging, and that DMG is not for distribution. Then tag the release
+(`v<version>`) and attach the DMG with `gh release create`.
 
 ## App icon
 
