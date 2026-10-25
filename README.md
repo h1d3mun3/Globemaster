@@ -27,6 +27,7 @@ Once launched, a ⌘ icon appears in the menu bar and key remapping is enabled a
 
 ## Requirements
 
+- A Mac with Apple Silicon
 - macOS 26.2 or later
 - Accessibility permission
 
